@@ -10,6 +10,7 @@ function AppLayout() {
 				<h1>App Content👋👋</h1>
 				<Outlet />
 			</main>
+			
 
 			<CartOverview />
 		</div>
