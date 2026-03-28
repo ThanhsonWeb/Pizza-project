@@ -8,7 +8,7 @@ body {
 .layout {
   display: grid;
   grid-template-rows: auto 1fr auto;
-  background-color: navajowhite;
+  background-color: rgb(235, 214, 214);
   gap: 32px;
   height: 100vh;
 }

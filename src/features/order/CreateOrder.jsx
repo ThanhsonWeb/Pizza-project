@@ -1,10 +1,9 @@
 // import { useState } from "react";
-
 // https://uibakery.io/regex-library/phone-number
-const isValidPhone = (str) =>
-	/^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/.test(
-		str,
-	);
+// const isValidPhone = (str) =>
+// 	/^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/.test(
+// 		str,
+// 	);
 
 const fakeCart = [
 	{
@@ -35,12 +34,10 @@ function CreateOrder() {
 	const cart = fakeCart;
 
 	console.log(cart);
-	console.log(isValidPhone);
 
 	return (
 		<div>
 			<h2>Ready to order? let is go!</h2>
-
 			<form>
 				<div>
 					<label>First Name</label>
