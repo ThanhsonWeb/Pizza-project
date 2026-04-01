@@ -43,7 +43,7 @@ import {
 
 function Order() {
 	const order = useLoaderData();
-	const {
+	const { 
 		// id,
 		status,
 		priority,

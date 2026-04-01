@@ -12,7 +12,6 @@ function AppLayout() {
 		<div className="layout">
 			<Header />
 			<main>
-				<h1>App Content👋👋</h1>
 				{isLoading ? <Loader /> : <Outlet />}
 			</main>
 
