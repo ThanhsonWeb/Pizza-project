@@ -17,6 +17,7 @@ function SearchOrder() {
 				value={query}
 				onChange={(e) => setQuery(e.target.value)}
 				placeholder="search..."
+				className="rounded-full px-2 py-1 text-md placeholder:text-stone-500  w-28 sm:w-64 transition-all duration-300  "
 			/>
 		</form>
 	);

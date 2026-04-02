@@ -64,6 +64,7 @@ function CreateOrder() {
 
 				<div>
 					<input
+						className="h-6 w-6  accent-blue-400 focus:outline-none focus:ring-blue-400 "
 						type="checkbox"
 						name="priority"
 						id="priority"
@@ -75,8 +76,8 @@ function CreateOrder() {
 
 				<div>
 					{/* b3 :  */}
-					<input type="hidden" name="cart" value={JSON.stringify(cart)} />
-					<button>Order now</button>
+					<input  type="hidden" name="cart" value={JSON.stringify(cart)} />
+					<button  className="p-3 bg-blue-600 rounded-full font-semibold text-xl uppercase  tracking-wide   transition-colors duration-500 hover:bg-blue-300 " >Order now</button>
 				</div>
 			</Form>
 		</div>
