@@ -6,7 +6,7 @@ import Cart from "./features/cart/Cart";
 import CreateOrder, {
 	action as createOderAction,
 } from "./features/order/CreateOrder";
-import Order, { orderLoader } from "./features/order/Order";
+import Order, { loader as orderLoader } from "./features/order/Order";
 import AppLayout from "./ui/AppLayout";
 
 const router = createBrowserRouter([
@@ -23,7 +23,6 @@ const router = createBrowserRouter([
 			{
 				path: "/menu",
 				element: <Menu />,
-				// loader is built in property
 				loader: menuLoader,
 				// if the API in menuLoader is broke -> appear <Error/>
 				errorElement: <Error />,

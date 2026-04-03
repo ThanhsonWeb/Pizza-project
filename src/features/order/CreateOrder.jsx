@@ -1,6 +1,7 @@
 // import { useState } from "react";
 import { Form, redirect } from "react-router-dom";
 import { createOrder } from "../../service/apiRestaurant";
+import Button from "../../ui/Button";
 
 // https://uibakery.io/regex-library/phone-number
 // const isValidPhone = (str) =>
@@ -40,32 +41,34 @@ function CreateOrder() {
 
 	return (
 		<div>
-			<h2>Ready to order? let is go!</h2>
 			{/* b1: use Form  */}
-			<Form method="POST">
-				<div>
-					<label>First Name</label>
-					<input type="text" name="customer" required />
+			<Form method="POST" className="text-xl" >
+			<h2>Ready to order? let is go!</h2>
+ {/* div 1  */}
+				<div >
+					<label >First Name</label>
+					<input  className="input" type="text" name="customer" required />
 				</div>
-
-				<div>
+{/* div 2 */}
+				<div >
 					<label>Phone number</label>
 					<div>
-						<input type="tel" name="phone" required />
+						<input  className="input"  type="tel" name="phone" required />
 					</div>
 				</div>
-
-				<div>
+{/* div 3 */}
+				<div  >
 					<label>Address</label>
 					<div>
-						<input type="text" name="address" required />
+						<input className="input"  type="text" name="address" required />
 					</div>
 				</div>
-
-				<div>
+{/* div 4  */}
+				<div className="flex items-center my-3 space-x-3" >
 					<input
 						className="h-6 w-6  accent-blue-400 focus:outline-none focus:ring-blue-400 "
 						type="checkbox"
+						
 						name="priority"
 						id="priority"
 						// value={withPriority}
@@ -73,22 +76,24 @@ function CreateOrder() {
 					/>
 					<label htmlFor="priority">Want to yo give your order priority?</label>
 				</div>
-
+{/* div 5 */}
 				<div>
-					{/* b3 :  */}
 					<input  type="hidden" name="cart" value={JSON.stringify(cart)} />
-					<button  className="p-3 bg-blue-600 rounded-full font-semibold text-xl uppercase  tracking-wide   transition-colors duration-500 hover:bg-blue-300 " >Order now</button>
+					<Button >Order now</Button>
 				</div>
 			</Form>
 		</div>
+
+
+
+
 	);
 }
 // b2: new form submit ->  call this action -> request send to the server
 export async function action({ request }) {
-	const formData = await request.formData(); //to extract the submitted values (name,number,address)
+	const formData = await request.formData(); 
 	const data = Object.fromEntries(formData);
-	// console.log(data); // name , number, address
-
+	console.log(data)
 	const order = {
 		...data,
 		cart: JSON.parse(data.cart),
