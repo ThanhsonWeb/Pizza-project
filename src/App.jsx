@@ -1,15 +1,20 @@
-// A new way of implementing Routes
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./ui/Home";
-import Menu from "./features/menu/Menu";
+import Error from "./ui/Error";
+import Menu, { menuLoader } from "./features/menu/Menu";
 import Cart from "./features/cart/Cart";
-import CreateOrder from "./features/order/CreateOrder";
-import Order from "./features/order/Order";
+import CreateOrder, {
+	action as createOderAction,
+} from "./features/order/CreateOrder";
+import Order, { loader as orderLoader } from "./features/order/Order";
 import AppLayout from "./ui/AppLayout";
+
 const router = createBrowserRouter([
 	{
-			// place App-layout at the  top to wrap all route
 		element: <AppLayout />,
+
+		errorElement: <Error />,
+
 		children: [
 			{
 				path: "/",
@@ -18,18 +23,25 @@ const router = createBrowserRouter([
 			{
 				path: "/menu",
 				element: <Menu />,
+				loader: menuLoader,
+				// if the API in menuLoader is broke -> appear <Error/>
+				errorElement: <Error />,
 			},
 			{
 				path: "/cart",
 				element: <Cart />,
 			},
+			// new form submit -> action get call
 			{
 				path: "/order/new",
 				element: <CreateOrder />,
+				action: createOderAction,
 			},
 			{
 				path: "/order/:orderId",
 				element: <Order />,
+				loader: orderLoader,
+				errorElement: <Error />,
 			},
 		],
 	},
