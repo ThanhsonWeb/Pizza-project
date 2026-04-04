@@ -3,20 +3,17 @@ import { getMenu } from "../../service/apiRestaurant";
 import MenuItem from "./MenuItem";
 
 function Menu() {
-	// b2 :  useLoaderData() to take data you fetched
 	const menu = useLoaderData();
 
 	return (
-		<>
+		<ul  className="space-y-2 divide-y divide-stone-200 p-2" >
 			{menu.map((pizza) => (
 				<MenuItem pizza={pizza} key={pizza.id} />
 			))}
-		</>
+		</ul>
 	);
 }
 
-// b1 :  user visit "/menu"  -> React call menuLoader()
-// --> then  fetch data  from API inside "getMenu()"
 export async function menuLoader() {
 	const menu = await getMenu();
 	return menu;
