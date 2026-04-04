@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 
 function Button({children, to}) {
 
-    const className=" inline-block p-3 bg-blue-600 rounded-full font-semibold text-xl uppercase  tracking-wide   transition-colors duration-500 hover:bg-blue-300  sm:px-6 sm:py-4 "
+    const className=" inline-block p-3 bg-yellow-600 rounded-full font-semibold text-xl uppercase  tracking-wide   transition-colors duration-500 hover:bg-blue-300  sm:px-6 sm:py-4 "
 
     if (to) 
         return (
