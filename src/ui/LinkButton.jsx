@@ -3,7 +3,7 @@ import { Link ,useNavigate} from "react-router-dom"
 function LinkButton({children, to}) {
 
     const navigate = useNavigate();
-    const className = "text-sm text-stone-300 hover:underline hover:text-blue-600 "
+    const className = "text-sm text-stone-600 hover:underline hover:text-blue-600 "
 
     if(to === "-1") 
         return
