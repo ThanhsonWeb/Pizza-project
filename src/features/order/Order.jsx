@@ -1,11 +1,12 @@
 // Test ID : IIDSAT
-import { getOrder } from "../../service/apiRestaurant";
-import { useLoaderData } from "react-router-dom";
+import { getOrder } from '../../service/apiRestaurant';
+import { useLoaderData } from 'react-router-dom';
+import Button from '../../ui/Button';
 import {
-	calcMinutesLeft,
-	formatCurrency,
-	formatDate,
-} from "../../utils/helpers";
+  calcMinutesLeft,
+  formatCurrency,
+  formatDate,
+} from '../../utils/helpers';
 // const order = {
 // 	id: "ABCDEF",
 // 	customer: "Jonas",
@@ -42,52 +43,53 @@ import {
 // };
 
 function Order() {
-	const order = useLoaderData();
-	const { 
-		// id,
-		status,
-		priority,
-		priorityPrice,
-		orderPrice,
-		estimatedDelivery,
-		// cart,
-	} = order;
-	const deliveryIn = calcMinutesLeft(estimatedDelivery);
+  const order = useLoaderData();
+  const {
+    // id,
+    status,
+    priority,
+    priorityPrice,
+    orderPrice,
+    estimatedDelivery,
+    // cart,
+  } = order;
+  const deliveryIn = calcMinutesLeft(estimatedDelivery);
 
-	return (
-		<div>
-			<div>
-				<h2>Status</h2>
+  return (
+    <div className="p-4"  >
+      {/* div 1 */}
+      <div className="mb-12 sm:flex sm:items-center sm:justify-between ">
+        <h2 className="text-3xl font-semibold"> Order ,,, Status</h2>
 
-				<div>
-					{priority && <span>Priority</span>}
-					<span>{status} order</span>
-				</div>
-			</div>
+        <div className="space-x-4" >
+          {priority && <Button variant="third">Priority</Button>}
+          <Button>{status} order</Button>
+        </div>
+      </div>
+      {/* div 2 */}
+      <div className="text-xl bg-stone-400 sm:flex items-center justify-around p-4 mb-12 " >
+        <p>
+          {deliveryIn >= 0
+            ? `Only ${calcMinutesLeft(estimatedDelivery)} minutes left 😃`
+            : 'Order should have arrived'}
+        </p>
+        <p>(Estimated delivery: {formatDate(estimatedDelivery)})</p>
+      </div>
 
-			<div>
-				<p>
-					{deliveryIn >= 0
-						? `Only ${calcMinutesLeft(estimatedDelivery)} minutes left 😃`
-						: "Order should have arrived"}
-				</p>
-				<p>(Estimated delivery: {formatDate(estimatedDelivery)})</p>
-			</div>
-
-			<div>
-				<p>Price pizza: {formatCurrency(orderPrice)}</p>
-				{priority && <p>Price priority: {formatCurrency(priorityPrice)}</p>}
-				<p>To pay on delivery: {formatCurrency(orderPrice + priorityPrice)}</p>
-			</div>
-		</div>
-	);
+      <div className="text-xl bg-stone-400 p-4 space-y-2 " >
+        <p>Price pizza: {formatCurrency(orderPrice)}</p>
+        {priority && <p>Price priority: {formatCurrency(priorityPrice)}</p>}
+        <p>To pay on delivery: {formatCurrency(orderPrice + priorityPrice)}</p>
+      </div>
+    </div>
+  );
 }
 
 // b1 create loader
 
 export async function loader({ params }) {
-	const order = await getOrder(params.orderId);
-	return order;
+  const order = await getOrder(params.orderId);
+  return order;
 }
 
 export default Order;

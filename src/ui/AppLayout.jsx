@@ -1,26 +1,24 @@
-import CartOverview from "../features/cart/CartOverview";
-import Header from "./Header";
-import Loader from "./Loader";
+import CartOverview from '../features/cart/CartOverview';
+import Header from './Header';
+import Loader from './Loader';
 
-import { Outlet, useNavigation } from "react-router-dom";
+import { Outlet, useNavigation } from 'react-router-dom';
 
 function AppLayout() {
-	//  useNavigation is a built in hook allow you check the current state.
-	const navigation = useNavigation();
-	const isLoading = navigation.state === "loading";
-	return (
-		<div className="grid  grid-rows-[auto,1fr,auto]  h-screen ">
-			<Header />
+  //  useNavigation is a built in hook allow you check the current state.
+  const navigation = useNavigation();
+  const isLoading = navigation.state === 'loading';
+  return (
+    <div className="grid h-screen grid-rows-[auto,1fr,auto]">
+      <Header />
 
-			<div  className="overflow-scroll" >
-				<main >
-					{isLoading ? <Loader /> : <Outlet />}
-				</main>
-			</div>
+      <div className="overflow-scroll">
+        <main>{isLoading ? <Loader /> : <Outlet />}</main>
+      </div>
 
-			<CartOverview />
-		</div>
-	);
+      <CartOverview />
+    </div>
+  );
 }
 
 export default AppLayout;

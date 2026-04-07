@@ -1,14 +1,17 @@
-import { Link } from "react-router-dom";
-import SearchOrder from "../features/order/SearchOrder";
-import UserName from "../features/user/UserName";
+import { Link } from 'react-router-dom';
+import SearchOrder from '../features/order/SearchOrder';
+import UserName from '../features/user/UserName';
 function Header() {
-	return (
-		<header className="  flex justify-between border-b-4 border-stone-600  bg-green-600 uppercase text-2xl text-center py-2  sm:py-9" >
-			<Link to="/"  className="tracking-wide  shadow-lg"  > Fast React Pizza Co. </Link>
-			<SearchOrder />
-			<UserName/>
-		</header>
-	);
+  return (
+    <header className="flex justify-between border-b-4 border-stone-600 bg-green-600 py-2 text-center text-2xl uppercase sm:py-9">
+      <Link to="/" className="tracking-wide shadow-lg">
+        {' '}
+        Fast React Pizza Co.{' '}
+      </Link>
+      <SearchOrder />
+      <UserName />
+    </header>
+  );
 }
 
 export default Header;
