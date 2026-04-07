@@ -1,13 +1,13 @@
 import { useSelector } from 'react-redux';
 
 function UserName() {
-  const userName = useSelector((store) => store.user.username);
+  const username = useSelector((store) => store.user.username);
 
-  if (!userName) return null;
+  if (!username) return null;
 
   return (
     <h1 className="flex hidden p-2 text-base font-semibold md:block">
-      {userName}
+      {username}
     </h1>
   );
 }

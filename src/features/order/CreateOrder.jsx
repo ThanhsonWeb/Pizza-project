@@ -2,6 +2,7 @@
 import { Form, redirect } from 'react-router-dom';
 import { createOrder } from '../../service/apiRestaurant';
 import Button from '../../ui/Button';
+import { useSelector } from 'react-redux';
 
 // https://uibakery.io/regex-library/phone-number
 // const isValidPhone = (str) =>
@@ -34,6 +35,8 @@ const fakeCart = [
 ];
 
 function CreateOrder() {
+  const username = useSelector((store) => store.user.username);
+
   // const [withPriority, setWithPriority] = useState(false);
   const cart = fakeCart;
 
@@ -46,21 +49,32 @@ function CreateOrder() {
         {/* div 1  */}
         <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center">
           <label className="sm:basis-40">First Name</label>
-          <input className="input flex-1" type="text" name="customer" required />
+          <input
+            className="input flex-1"
+            type="text"
+            defaultValue={username}
+            name="customer"
+            required
+          />
         </div>
 
         {/* div 2 */}
         <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center">
           <label className="sm:basis-40">Phone number</label>
           <div className="flex-1">
-            <input className="input  w-full" type="tel" name="phone" required />
+            <input className="input w-full" type="tel" name="phone" required />
           </div>
         </div>
         {/* div 3 */}
         <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center">
           <label className="sm:basis-40">Address</label>
           <div className="flex-1">
-            <input className="input w-full" type="text" name="address" required />
+            <input
+              className="input w-full"
+              type="text"
+              name="address"
+              required
+            />
           </div>
         </div>
         {/* div 4  */}
@@ -80,7 +94,6 @@ function CreateOrder() {
           <input type="hidden" name="cart" value={JSON.stringify(cart)} />
           <Button>Order now</Button>
         </div>
-        
       </Form>
     </div>
   );

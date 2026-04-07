@@ -25,15 +25,18 @@ const fakeCart = [
     totalPrice: 15,
   },
 ];
+import { useSelector } from 'react-redux';
 
 function Cart() {
+  const userName = useSelector((store) => store.user.username);
+
   const cart = fakeCart;
 
   return (
     <div className="p-4">
       <LinkButton>&larr; Back to menu</LinkButton>
 
-      <h2 className="mt-7 text-xl font-semibold">Your cart, %NAME%</h2>
+      <h2 className="mt-7 text-3xl font-semibold">Your cart - {userName }</h2>
       <ul className="mt-3 divide-y divide-stone-300 bg-blue-50">
         {cart.map((item) => (
           <CartItem item={item} key={item.name} />
