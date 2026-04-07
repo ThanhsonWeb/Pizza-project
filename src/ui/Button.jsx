@@ -27,7 +27,6 @@ function Button({ children, to, variant = 'primary' }) {
     primary: 'bg-green-600 text-white hover-bg-green-700',
     secondary: 'bg-stone-300 text-stone-800 hover:bg-stone-400',
     small: 'text-xs  sm:py-2  ',
-    third : "bg-red-500 text-sm text-white"
   };
   const className = `${base}  ${style[variant]} `;
 
