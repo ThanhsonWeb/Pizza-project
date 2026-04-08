@@ -34,4 +34,11 @@ const cartSlice = createSlice({
 export const { addItem, deleteItem, increaseItem, decreaseItem, clearCart } =
   cartSlice.actions;
 
-export default cartSlice.reducers;
+export default cartSlice.reducer;
+
+// Selectors
+export const getTotalQuantity = (store) =>
+  store.cart.cart.reduce((sum, item) => sum + item.quantity, 0);
+
+export const getTotalPrice = (store) =>
+  store.cart.cart.reduce((sum, item) => sum + item.totalPrice, 0);
