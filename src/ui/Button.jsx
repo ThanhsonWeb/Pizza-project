@@ -19,9 +19,9 @@
 
 import { Link } from 'react-router-dom';
 
-function Button({ children, to, variant = 'primary' }) {
+function Button({ children, to, variant = 'primary', onClick }) {
   const base =
-    ' inline-block   p-3 bg-green-600 rounded-full font-semibold uppercase  tracking-wide   transition-colors duration-500  sm:px-6 sm:py-4 ';
+    ' inline-block   p-3 bg-blue-600 rounded-full font-semibold uppercase  tracking-wide   transition-colors duration-500  sm:px-6 sm:py-4 ';
 
   const style = {
     primary: 'bg-green-600 text-white hover-bg-green-700',
@@ -37,7 +37,11 @@ function Button({ children, to, variant = 'primary' }) {
       </Link>
     );
 
-  return <button className={className}>{children}</button>;
+  return (
+    <button onClick={onClick ? onClick : null}  className={className}>
+      {children}
+    </button>
+  );
 }
 
 export default Button;
