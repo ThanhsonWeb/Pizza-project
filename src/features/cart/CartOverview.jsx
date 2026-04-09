@@ -8,7 +8,7 @@ function CartOverview() {
   const totalCartQuantity = useSelector((store) =>
     store.cart.cart.reduce((sum, item) => sum + item.quantity, 0),
   );
-  // c2 : import from cartSlice.js
+  // c2 : selectors
   const totalPrice = useSelector(getTotalPrice);
 
   if (!totalCartQuantity) return null;

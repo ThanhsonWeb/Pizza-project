@@ -19,7 +19,14 @@
 
 import { Link } from 'react-router-dom';
 
-function Button({ children, to, variant = 'primary', onClick }) {
+function Button({
+  children,
+  to,
+  variant = 'primary',
+  onClick,
+  onDelete,
+  onClearAll,
+}) {
   const base =
     ' inline-block   p-3 bg-blue-600 rounded-full font-semibold uppercase  tracking-wide   transition-colors duration-500  sm:px-6 sm:py-4 ';
 
@@ -37,11 +44,25 @@ function Button({ children, to, variant = 'primary', onClick }) {
       </Link>
     );
 
-  return (
-    <button onClick={onClick ? onClick : null}  className={className}>
-      {children}
-    </button>
-  );
+  if (onClick)
+    return (
+      <button onClick={onClick} className={className}>
+        {children}
+      </button>
+    );
+  if (onDelete)
+    return (
+      <button onClick={onDelete} className={className}>
+        {children}
+      </button>
+    );
+
+  if (onClearAll)
+    return (
+      <button onClick={onClearAll} className={className}>
+        {children}
+      </button>
+    );
 }
 
 export default Button;
