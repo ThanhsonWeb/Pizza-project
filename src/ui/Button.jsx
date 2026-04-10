@@ -1,41 +1,17 @@
-// import { Link } from "react-router-dom"
-
-// function Button({children, to, variant = "primary"}) {
-//     const className = " inline-block p-3 bg-green-600 rounded-full font-semibold uppercase  tracking-wide   transition-colors duration-500 hover:bg-blue-300  sm:px-6 sm:py-4 "
-
-//     if (to)
-//         return (
-//             <Link to={to} className={className}  >{children}</Link>
-//         )
-
-//     return (
-//         <button className={className} >
-//             {children}
-//         </button>
-//     )
-// }
-
-// export default Button
 
 import { Link } from 'react-router-dom';
 
-function Button({
-  children,
-  to,
-  variant = 'primary',
-  onClick,
-  onDelete,
-  onClearAll,
-}) {
+function Button({ children, to, type = 'primary', onClick }) {
   const base =
-    ' inline-block   p-3 bg-blue-600 rounded-full font-semibold uppercase  tracking-wide   transition-colors duration-500  sm:px-6 sm:py-4 ';
+    ' inline-block text-white  p-3 bg-blue-600 rounded-full font-semibold uppercase  tracking-wide   transition-colors duration-500   ';
 
   const style = {
-    primary: 'bg-green-600 text-white hover-bg-green-700',
-    secondary: 'bg-stone-300 text-stone-800 hover:bg-stone-400',
-    small: 'text-xs  sm:py-2  ',
+    primary: ' px-4 py-3 md:px-6 md:py-4',
+    secondary: 'bg-stone-300 text-stone- hover:bg-stone-400 sm:px-6 sm:py-4',
+    small: 'text-xs  sm:py-2  sm:px-6 sm:py-4 ',
+    round: ' px-3 py-[5px] ',
   };
-  const className = `${base}  ${style[variant]} `;
+  const className = `${base}  ${style[type]} `;
 
   if (to)
     return (
@@ -47,19 +23,6 @@ function Button({
   if (onClick)
     return (
       <button onClick={onClick} className={className}>
-        {children}
-      </button>
-    );
-  if (onDelete)
-    return (
-      <button onClick={onDelete} className={className}>
-        {children}
-      </button>
-    );
-
-  if (onClearAll)
-    return (
-      <button onClick={onClearAll} className={className}>
         {children}
       </button>
     );

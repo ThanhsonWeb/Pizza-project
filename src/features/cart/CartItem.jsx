@@ -1,7 +1,8 @@
+import { useDispatch } from 'react-redux';
 import { formatCurrency } from '../../utils/helpers';
 import Button from '../../ui/Button';
 import { deleteItem } from './cartSlice';
-import { useDispatch } from 'react-redux';
+import UpdateItemQuantity from './UpdateItemQuantity';
 
 function CartItem({ item }) {
   const { pizzaId, name, quantity, totalPrice } = item;
@@ -18,7 +19,13 @@ function CartItem({ item }) {
       </p>
       <div className="flex items-center space-x-4">
         <p>{formatCurrency(totalPrice)}</p>
-        <Button onDelete={handleDeleteItem} variant="small">
+        {/* b2 : use it with conditional */}
+        <UpdateItemQuantity
+          pizzaId={pizzaId}
+          currentQuantity={quantity <= 0 ? handleDeleteItem() : quantity}
+        />
+
+        <Button onClick={handleDeleteItem} type="small">
           Delete
         </Button>
       </div>

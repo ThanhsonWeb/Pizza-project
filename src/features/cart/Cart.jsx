@@ -33,7 +33,7 @@ function Cart() {
 
       <div className="mt-6 space-x-3">
         <Button to="/order/new">Order pizzas</Button>
-        <Button onClearAll={handleClearAll} variant="secondary">
+        <Button onClick={handleClearAll} type="secondary">
           Clear cart
         </Button>
       </div>

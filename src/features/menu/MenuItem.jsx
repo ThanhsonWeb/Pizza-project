@@ -1,12 +1,11 @@
+import { useDispatch } from 'react-redux';
 import { formatCurrency } from '../../utils/helpers';
 import Button from '../../ui/Button';
 import { addItem } from '../cart/cartSlice';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 
 function MenuItem({ pizza }) {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
 
   const { id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
 
@@ -19,7 +18,6 @@ function MenuItem({ pizza }) {
       totalPrice: unitPrice,
     };
     dispatch(addItem(newItem));
-    navigate('/cart');
   }
 
   return (
@@ -39,6 +37,7 @@ function MenuItem({ pizza }) {
           ) : (
             <p className="uppercase">Sold out</p>
           )}
+
           {!soldOut && <Button onClick={handleAddToCart}>Add to card</Button>}
         </div>
       </div>
