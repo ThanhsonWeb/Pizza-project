@@ -18,9 +18,10 @@ function Button({ children, to, type = 'primary', onClick }) {
       <Link to={to} className={className}>
         {children}
       </Link>
+
     );
 
-  if (onClick)
+  
     return (
       <button onClick={onClick} className={className}>
         {children}

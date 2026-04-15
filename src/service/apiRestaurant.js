@@ -23,6 +23,7 @@ export async function createOrder(newOrder) {
     const res = await fetch(`${API_URL}/order`, {
       method: 'POST',
       body: JSON.stringify(newOrder),
+      // {customer: 'Son', phone: 'asdfasdf', address: 'hehe', cart: '[{"pizzaId":12,"name":"Mediterranean","quantity":2,"unitPrice":16,"totalPrice":32}]'}
       headers: {
         'Content-Type': 'application/json',
       },

@@ -3,44 +3,15 @@ import { Form, redirect } from 'react-router-dom';
 import { createOrder } from '../../service/apiRestaurant';
 import Button from '../../ui/Button';
 import { useSelector } from 'react-redux';
-
-// https://uibakery.io/regex-library/phone-number
-// const isValidPhone = (str) =>
-// 	/^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/.test(
-// 		str,
-// 	);
-
-const fakeCart = [
-  {
-    pizzaId: 12,
-    name: 'Mediterranean',
-    quantity: 2,
-    unitPrice: 16,
-    totalPrice: 32,
-  },
-  {
-    pizzaId: 6,
-    name: 'Vegetale',
-    quantity: 1,
-    unitPrice: 13,
-    totalPrice: 13,
-  },
-  {
-    pizzaId: 11,
-    name: 'Spinach and Mushroom',
-    quantity: 1,
-    unitPrice: 15,
-    totalPrice: 15,
-  },
-];
+import { getCart } from '../cart/cartSlice';
+import EmptyCart from '../cart/EmptyCart';
 
 function CreateOrder() {
   const username = useSelector((store) => store.user.username);
 
-  // const [withPriority, setWithPriority] = useState(false);
-  const cart = fakeCart;
+  const cart = useSelector(getCart);
 
-  console.log(cart);
+  if (!cart.length) return <EmptyCart />;
 
   return (
     <div className="p-4">
@@ -101,6 +72,7 @@ function CreateOrder() {
 // b2: new form submit ->  call this action -> request send to the server
 export async function action({ request }) {
   const formData = await request.formData();
+  //a built‑in method that reads all the fields from the submitted form and returns them as a FormData object.
   const data = Object.fromEntries(formData);
   console.log(data);
   const order = {

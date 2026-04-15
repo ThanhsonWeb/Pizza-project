@@ -8,6 +8,8 @@ import {
   formatCurrency,
   formatDate,
 } from '../../utils/helpers';
+import { getCart } from '../cart/cartSlice';
+import { useSelector } from 'react-redux';
 // const order = {
 // 	id: "ABCDEF",
 // 	customer: "Jonas",
@@ -52,9 +54,11 @@ function Order() {
     priorityPrice,
     orderPrice,
     estimatedDelivery,
-    cart,
+    // cart,
   } = order;
   const deliveryIn = calcMinutesLeft(estimatedDelivery);
+
+  const cart = useSelector(getCart);
 
   return (
     <div className="p-4">
@@ -81,9 +85,9 @@ function Order() {
         <p>(Estimated delivery: {formatDate(estimatedDelivery)})</p>
       </div>
 
-      <ul className="divide-y-2  p-3 mb-12 " >
+      <ul className="mb-12 divide-y-2 p-3">
         {cart.map((item) => (
-          <OrderItem item={item} key={item.id}  />
+          <OrderItem item={item} key={item.pizzaId} />
         ))}
       </ul>
 
